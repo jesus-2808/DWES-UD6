@@ -19,14 +19,14 @@ class Vivienda {
     public function __set($nombre,$valor){
         switch ($nombre){
             case "tipoVivienda":
-                $this->$nombre = $valor;
-            default:
+             $this->$nombre = $valor;
             break;
             case "valorMercado":
                 if ($valor>0)
                      $this->$nombre=$valor;
                 else
                     echo "el valor no puede ser menor a 0";
+                break;
             
         } 
        
