@@ -1,28 +1,18 @@
 <?php
-abstract class FiguraGeometrica{
-    private string $color;
 
-    abstract protected function dibuja();
-    abstract protected function area();
-    
-}
+include_once "Cuadrado.php";
+include "Triangulo.php";
+include_once "Circulo.php";
 
-class Cuadrado extends FiguraGeometrica{
-    private string $tipo;
-    private string $area;
+$cir=new Circulo("rojo", 2);
+$tri=new Triangulo( 4.0, 3.0, "azul");
+$cir->dibuja();
+echo $cir->area();
+echo "<br>";
 
-    protected function getTipo(){
-        return $this->tipo;
-    }
-    protected function setTipo($tipo){
-        return $this->tipo=$tipo;
-    }
-    protected function dibuja(){
-        return $tipo;
-    }
+$tri->dibuja();
+echo $tri->area();
 
-    protected function area(){
-        return $area;
-    }
-}
+
+
 ?>
