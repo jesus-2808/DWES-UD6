@@ -73,15 +73,15 @@ class Trabajador extends Persona {
     {
         $this->nombreEmpresa = $nombreEmpresa;
     }
-    public function getNombreEmpresa($nombreEmpresa)
+    public function getNombreEmpresa()
     {
-        $this->nombreEmpresa = $nombreEmpresa;
+        $this->nombreEmpresa ;
     }
 
     public function mostrarCompleto()
     {
         Persona::mostrar();
-        echo "su empresa es: $this->nombreEmpresa"; 
+        echo " Empresa: " . $this->nombreEmpresa;
     }
 
       
