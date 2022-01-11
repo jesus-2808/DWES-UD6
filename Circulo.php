@@ -1,7 +1,7 @@
 <?php
 include_once "FiguraGeometrica.php";
 class Circulo extends FiguraGeometrica{
-    private string $radio;
+    private float $radio;
 
     public function __construct($radio,$color)
     {

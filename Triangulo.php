@@ -24,7 +24,8 @@ class Triangulo extends FiguraGeometrica{
     }
 
     public function area(){
-        return $this->base * $this->altura;
+        $result=($this->base * $this->altura)/2;
+        return $result;
     } 
 
 }
