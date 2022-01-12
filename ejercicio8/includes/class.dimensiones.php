@@ -7,38 +7,33 @@ class Dimensiones
 
     function __construct($largo, $alto, $ancho)
     {
-        $this->largo = $largo;
-        $this->alto = $alto;
-        $this->ancho = $ancho;
+
+        if ($largo < 1 && !is_float($largo)) {
+            echo "no se puede continuar";
+            die();
+        } else {
+            $this->largo = $largo;
+        }
+
+        if ($alto < 1 && !is_float($alto)) {
+            echo "no se puede continuar";
+            die();
+        } else {
+            $this->alto = $alto;
+        }
+
+        if ($alto < 1 && !is_float($ancho)) {
+            echo "no se puede continuar";
+            die();
+        } else {
+            $this->ancho = $ancho;
+        }
     }
 
-    public function setLargo($largo)
-    {
-        $this->largo = $largo;
-    }
 
-    public function getLargo($largo)
+    public function __get($nombre)
     {
-        $this->largo = $largo;
-    }
-
-    public function setAlto($alto)
-    {
-        $this->alto = $alto;
-    }
-    public function getAlto($alto)
-    {
-        $this->alto = $alto;
-    }
-
-    public function setAncho($ancho)
-    {
-        $this->ancho = $ancho;
-    }
-
-    public function getAncho($ancho)
-    {
-        $this->ancho = $ancho;
+        return "el valor del atributo es " . $this->$nombre;
     }
 
 
@@ -46,24 +41,9 @@ class Dimensiones
     {
         return $this->largo . "largo <br>" . $this->alto . "alto <br>" . $this->ancho . "ancho";
     }
-
-    public function __get($nombre)
-    {
-        return "el valor del atributo es " . $this->$nombre;
-    }
-
-    public function __set($nombre, $valor)
-    {
-        if ($valor < 1 && !is_float($valor))  {
-            echo "no se puede continuar";
-            
-        } else {
-            $this->$nombre=$valor;
-        }
-    }
 }
 
 $d1 = new Dimensiones(3, 7, 2);
 
 echo $d1;
-$d1->alto=0;
+
