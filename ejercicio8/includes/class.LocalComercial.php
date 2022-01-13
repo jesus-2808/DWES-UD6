@@ -1,5 +1,5 @@
 <?php
-include "class.local.php";
+
 
 class LocalComercial extends Local{
     private string $razonSocial;
@@ -27,7 +27,8 @@ class LocalComercial extends Local{
     }
 
 }
-
+/*
 $comercial1=new LocalComercial("Dos Hermanas", "Reyes Catolicos", 3, $dimensiones, "ferreteria", "45090741P");
 echo $comercial1;
+*/
 ?>
