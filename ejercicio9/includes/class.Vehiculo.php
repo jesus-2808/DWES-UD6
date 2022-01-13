@@ -8,17 +8,17 @@ class Vehiculo{
        $this->peso=$peso;
    } 
 
-    public function setCircula($circula){
-    $this->circula=$circula;
+    public function __get($name){
+    return $this->$name;
     }
 
-    public function getCircula(){
-    return $this->circula;
-    }
-
-    public function circula()
+    public function __set($name, $value)
     {
-    return $this->circula;
+    return $name->$value;
+    }
+
+    public function addPerson($peso_persona){
+        $this->peso +=$peso_persona;
     }
 }
 ?>
