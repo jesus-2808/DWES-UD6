@@ -7,23 +7,21 @@ class LocalComercial extends Local{
 
     function __construct($ciudad, $calle, $plantas, $dimensiones,$razonSocial, $nLicencia){
         parent::__construct($ciudad, $calle, $plantas, $dimensiones);
-        if (!is_string($razonSocial)) {
-            echo "la razon social no tiene el formato correcto";
-            die();
-        } else {
-            $this->razonSocial = $razonSocial;
-        }
-        if (!is_string($nLicencia)&& strlen($nLicencia)>9) {
-            echo "el numero de licencia no tiene el formato ni la longitud correcta";
-            die();
-        } else {
+        if (is_string($razonSocial) && is_string($nLicencia)) {
+           
             $this->nLicencia = $nLicencia;
+            $this->razonSocial = $razonSocial;
+           
+        } else {
+            echo "el numero de licencia y la r social no tiene el formato ni la longitud correcta";
+            die();
+
         }
     }
 
     public function __toString()
     {
-        return " <p> datos del local</p> <p> " . $this->razonSocial . " </p> <p> Nºde licencia <br>" . $this->nLicencia ;
+        return " <p>".parent::__toString()."</p> <p> razon social</p> <p> " . $this->razonSocial . " </p> <p> Nºde licencia <br>" . $this->nLicencia ;
     }
 
 }
