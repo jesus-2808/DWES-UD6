@@ -1,5 +1,5 @@
 <?php
-class Vehiculo{
+abstract class Vehiculo{
     private string $color;
     private int $peso;
 
@@ -14,9 +14,9 @@ class Vehiculo{
         echo "el vehiculo circula";
     }
 
-    public function addPerson($peso_persona){
-        $this->peso +=$peso_persona;
-    }
+    abstract function addPerson($peso_persona);
+        
+    
 
     public function setPeso($peso) {
         $this->peso = $peso;

@@ -19,6 +19,7 @@ echo $coche2;
 
 echo " <p><b>Objeto 2 ruedas</b></p>";
 $obj2ruedas=new Dos_Ruedas("marron", 30, 1000);
+$obj2ruedas->addPerson(2);
 $obj2ruedas->poner_gasolina(2000);
 
 echo $obj2ruedas;

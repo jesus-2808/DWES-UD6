@@ -5,15 +5,23 @@ class Dos_Ruedas extends Vehiculo
 
     function __construct($color, $peso, $cilindrada)
     {
-        parent::__construct($color, $peso);
+       
         $this->cilindrada = $cilindrada;
+        parent::__construct($color, $peso);
     }
+
+    function addPerson($peso_persona)
+    {
+        $this->peso +=$peso_persona+1.5;
+    }
+
 
     public function poner_gasolina($litros)
     {
      $this->peso +=$litros*1.5; 
     }
 
+   
     public function __get($name)
     {
         if (property_exists(get_Class(),$name)) {
@@ -23,7 +31,16 @@ class Dos_Ruedas extends Vehiculo
         }
     }
 
-    public function __set($name, $value){
-        $this->$name = $value;
+    public function __set($name, $value)
+    {
+        if (property_exists(get_Class(),$name)) {
+            $this->$name = $value;
+        } else {
+            parent::__set($name, $value);
+        }
     }
 }
+
+
+
+    

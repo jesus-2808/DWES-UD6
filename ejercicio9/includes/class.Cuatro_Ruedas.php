@@ -30,6 +30,12 @@ class Cuatro_Ruedas extends Vehiculo
              parent::__set($name, $value);
         }
     }
+
+   public function addPerson($peso_persona)
+    {
+        $this->peso = $this->peso+$peso_persona;
+     
+    }
     
     function __toString()
     {
