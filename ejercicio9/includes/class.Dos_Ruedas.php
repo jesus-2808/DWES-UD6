@@ -21,7 +21,10 @@ class Dos_Ruedas extends Vehiculo
      $this->peso +=$litros*1.5; 
     }
 
-   
+    public function añadirPuertas($puertas_nuevas)
+    {
+        $this->numeroPuertas = $this->numeroPuertas+$puertas_nuevas;
+    }
     public function __get($name)
     {
         if (property_exists(get_Class(),$name)) {

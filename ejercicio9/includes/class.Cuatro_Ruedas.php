@@ -3,10 +3,10 @@ class Cuatro_Ruedas extends Vehiculo
 {
     private int $numero_puertas;
 
-    function __construct($color, $peso, $numero_puertas)
+    function __construct($color, $peso, $numeroPuertas)
     {
         
-        $this->numero_puertas = $numero_puertas;
+        $this->numeroPuertas = $numeroPuertas;
         parent::__construct($color, $peso);
     }
 
@@ -37,8 +37,12 @@ class Cuatro_Ruedas extends Vehiculo
      
     }
     
+    public function añadirPuertas($puertas_nuevas)
+    {
+        $this->numeroPuertas = $this->numeroPuertas+$puertas_nuevas;
+    }
     function __toString()
     {
-        return  " Datos del vehiculo <p>".parent::__toString()."</p>  <p> numero de puertas <br>" . $this->numero_puertas  ;
+        return  " Datos del vehiculo <p>".parent::__toString()."</p>  <p> numero de puertas <br>" . $this->numeroPuertas  ;
     }
 }

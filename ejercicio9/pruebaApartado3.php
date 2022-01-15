@@ -14,6 +14,7 @@ echo $coche2;
 
 echo $coche2->repintar("amarillo");
 echo $coche2->añadir_cadenas_nieve(3);
+$coche2->numeroPuertas +2;
 echo " <p><b>coche repintado y cadenas añadidas</b></p>";
 echo $coche2;
 
