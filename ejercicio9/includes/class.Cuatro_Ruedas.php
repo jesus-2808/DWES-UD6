@@ -25,7 +25,7 @@ class Cuatro_Ruedas extends Vehiculo
 
     public function __set($name, $value){
         if (property_exists(get_Class(),$name)) {
-            $this->name=$value;
+            $this->$name=$value;
         } else {
              parent::__set($name, $value);
         }
@@ -33,7 +33,14 @@ class Cuatro_Ruedas extends Vehiculo
 
    public function addPerson($peso_persona)
     {
-        $this->peso = $this->peso+$peso_persona;
+      /*  $peso_total= $this->peso+$peso_persona;
+        if($peso_total>2100){
+            $this->peso = 2100;
+           
+        }else{*/
+            $this->peso += $peso_persona;
+
+     
      
     }
     

@@ -16,10 +16,10 @@ echo $moto2;
 
 $camion1=new Camion ("blanco", 6000, 4, 600);
 $camion1->addPerson(84);
-$camion1->añadirPuertas(2);
+$camion1->numeroPuertas +=2;
 
 echo $camion1;
-
-print_r($camion1->ver_atributo($camion1));
+echo "<br>";
+print_r(Vehiculo::ver_atributo($camion1));
 
 ?>

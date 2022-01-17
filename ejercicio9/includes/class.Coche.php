@@ -36,7 +36,7 @@ class Coche extends Cuatro_Ruedas{
    
     public function __set($name, $value){
         if (property_exists(get_Class(),$name)) {
-            $this->name=$value;
+            $this->$name=$value;
         } else {
           parent::__set($name, $value);
         }
