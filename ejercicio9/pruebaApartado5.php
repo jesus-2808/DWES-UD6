@@ -16,5 +16,6 @@ $cocheVerde->quitar_cadenas_nieve(4);
 
 $cocheVerde->repintar("negro");
 
+
 echo $cocheVerde;
 ?>
