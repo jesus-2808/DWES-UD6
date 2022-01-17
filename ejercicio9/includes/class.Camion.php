@@ -3,9 +3,9 @@
 class Camion extends Cuatro_Ruedas{
     private int $longitud;
 
-    public function __construct($color, $peso, $numero_puertas, $longitud)
+    public function __construct($color, $peso, $numeroPuertas, $longitud)
     {
-        parent::__construct($color, $peso, $numero_puertas);
+        parent::__construct($color, $peso, $numeroPuertas);
         $this->longitud=$longitud;
     }
 
