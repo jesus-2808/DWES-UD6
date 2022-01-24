@@ -6,7 +6,7 @@ interface IVehiculo{
 
     public function __get($name);
 
-    public static function ver_atributo($obj)
+    public static function ver_atributo($obj);
 }
 
 ?>
