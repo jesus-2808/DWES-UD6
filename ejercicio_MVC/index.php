@@ -3,7 +3,7 @@
 // La carpeta donde buscaremos los controladores.
 define('CONTROLLERS_FOLDER', "controllers/");
 // Si no se indica un controlador, este es el controlador que se usará.
-define('DEFAULT_CONTROLLER', "periodicos");
+define('DEFAULT_CONTROLLER', "coches");
 // Si no se indica una acción, esta acción es la que se usará.
 define('DEFAULT_ACTION', "listar");
 
