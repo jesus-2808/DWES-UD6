@@ -1,7 +1,8 @@
 
 <?php
 
-function listar() {
+function listar()
+{
     // Se incluye el modelo.
     require './models/coches_model.php';
     // En $libros tenemos un array con todos los libros gracias al modelo.
@@ -10,33 +11,46 @@ function listar() {
     include './views/coches_listar.php';
 }
 
-function mostrar() {
+function mostrar()
+{
     // Se incluye el modelo.
     require './models/coches_model.php';
     // En $libros tenemos un array con todos los libros gracias al modelo.
-    $coche = getCoche($_GET['id']);
+    $coche = getCoche($_GET['Id']);
     // La vista recibe un array para mostrarlo por pantalla.
     include './views/coches_mostrar.php';
 }
 
-function actualizar() {
+
+
+function actualizar()
+{
     // Se incluye el modelo.
-    require './models/coches_model.php';
-    // En $libros tenemos un array con todos los libros gracias al modelo.
-    if(isset($_GET['id'])){
-        $id=$_GET['id'];
-    }else if (isset($_GET['id'])){
+   require './models/coches_model.php';
+    // En $coches tenemos un array con todos los libros gracias al modelo.
+    $coche = getCoche($_GET['Id']);
+    if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $id = $_POST['id'];
-    }
-    $coche=getCoche($id);
-    
+        $coche = obtenerElemento($id);
+        $marca = $_POST['Marca'];
+        $modelo = $_POST['Modelo'];
+        $descripcion =  $_POST['Cilindrada'];
+        $precio = $_POST['Victorias_carreras'];
+        $cantidad = $_POST['Titulos'];
+        $fecha = $_POST['Fecha_debut'];
   
-    if (isset($_GET['actualizar'])) {
-        $coche_editado = editarElemento( $_POST["id"], $_POST["Marca"],$_POST["Modelo"], $_POST["Cilindrada"],$_POST["victorias_carreras"],$_POST["TItulos"],
-        $_POST["Fecha_debut"]);
+        
+    if ($coche_editado == true) {
+        header("Location: ./index.php");
+        exit();
+    } else {
+        header("Location: ./views/coches_actualizar.php?Id=" . $id . "&error=si");
     }
-    include './views/coches_actualizar.php';
-   
 }
+
+function crear(){
+
+}
+
 
 ?>

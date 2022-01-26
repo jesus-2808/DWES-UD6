@@ -36,9 +36,9 @@ function getCoche($id)
     return $coche;
 }
 
-function editarElemento( $id)
+function editarElemento($id, $brand, $model, $engine, $victories, $titles, $debut)
 {
- 
+
 
     try {
         $db = getConnection();
@@ -46,13 +46,19 @@ function editarElemento( $id)
 
         $sql = $db->prepare("UPDATE coches SET Marca=?, Modelo=?, Cilindrada=?, victorias_carreras=?, TItulos=?, Fecha=? WHERE id=?");
 
-            
-              $sql->bindParam(1,  $id);
-       
-        if ($updated = $sql->execute()) {
+
+        $sql->bindParam(1,  $id);
+        $sql->bindParam(2,  $brand);
+        $sql->bindParam(3,  $model);
+        $sql->bindParam(4,  $engine);
+        $sql->bindParam(5,  $victories);
+        $sql->bindParam(6,  $titles);
+        $sql->bindParam(7,  $debut);
+
+
+        $sql->execute();
+        if ($sql->rowCount() > 0) {
             $updated = true;
-        } else {
-            $updated = false;
         }
     } catch (PDOException $e) {
         echo "Connection fallida: " . $e->getMessage();
@@ -60,4 +66,27 @@ function editarElemento( $id)
     }
     $db = null;
     return $updated;
+}
+
+function crearCoche($marca, $modelo, $cilindrada, $victorias_carreras, $titulos, $fecha_debut, $imagen)
+{
+    $db = getConnection();
+
+    try {
+        $sql = $db->prepare("INSERT into coches(Marca, Modelo, Cilindrada, Victorias_carreras, TItulos, Fecha, Imagen) values(?,?,?,?,?,?,?)");
+        $sql->bindParam(1, $marca);
+        $sql->bindParam(2, $modelo);
+        $sql->bindParam(3, $cilindrada);
+        $sql->bindParam(4, $victorias_carreras);
+        $sql->bindParam(5, $titulos);
+        $sql->bindParam(6, $fecha_debut);
+        $sql->bindParam(7, $imagen);
+        $sql->execute();
+        $id = $db->lastInsertId();
+        $db = null;
+        return $id;
+    } catch (\Throwable $e) {
+        echo "Connection fallida: " . $e->getMessage();
+        echo "<br>";
+    }
 }
