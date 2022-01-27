@@ -36,7 +36,7 @@ function getCoche($id)
     return $coche;
 }
 
-function editarElemento($id, $brand, $model, $engine, $victories, $titles, $debut)
+function editarElemento($id, $marca, $modelo, $cilindrada, $victorias_carreras, $titulos, $fecha_debut)
 {
 
 
@@ -48,12 +48,12 @@ function editarElemento($id, $brand, $model, $engine, $victories, $titles, $debu
 
 
         $sql->bindParam(1,  $id);
-        $sql->bindParam(2,  $brand);
-        $sql->bindParam(3,  $model);
-        $sql->bindParam(4,  $engine);
-        $sql->bindParam(5,  $victories);
-        $sql->bindParam(6,  $titles);
-        $sql->bindParam(7,  $debut);
+        $sql->bindParam(2,  $marca);
+        $sql->bindParam(3,  $modelo);
+        $sql->bindParam(4,  $cilindrada);
+        $sql->bindParam(5,  $victorias_carreras);
+        $sql->bindParam(6,  $titulos);
+        $sql->bindParam(7,  $fecha_debut);
 
 
         $sql->execute();

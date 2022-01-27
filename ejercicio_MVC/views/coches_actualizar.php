@@ -12,6 +12,7 @@
 </head>
 
 <body>
+<a href="index.php">Volver</a>
     <?php
 
 if (isset($coche)) {
@@ -61,12 +62,7 @@ if (isset($_GET['Id'])) {
             <img name="avatarActual" width=200px src=""><!-- Aquí tienes que cargar la imagen actual -->
             <input type="file" name="avatar" accept="image/png, image/jpeg" class="input-100">
             <input type="submit" value="Editar" class="btn-enviar">
-            
-            <?php
-            if(isset($_GET["error"])){
-                echo "<div>".$error."</div>";
-            }
-            ?>
+           
         </div>
     </form>
 </body>
