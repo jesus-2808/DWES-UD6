@@ -21,36 +21,42 @@ function mostrar()
     include './views/coches_mostrar.php';
 }
 
+function recoger()
+{
+    // Se incluye el modelo.
+    require './models/coches_model.php';
+    // En $libros tenemos un array con todos los libros gracias al modelo.
+
+    if (isset($_GET['Id'])) {
+        $id = $_GET['Id'];
+        $coche = getCoche($_GET['Id']);
+    }
+    // La vista recibe un array para mostrarlo por pantalla.
+    include './views/coches_actualizar.php';
+}
+
+
 
 
 function actualizar()
 {
-    // Se incluye el modelo.
-   require './models/coches_model.php';
-    // En $coches tenemos un array con todos los libros gracias al modelo.
-    $coche = getCoche($_GET['Id']);
-    if ($_SERVER["REQUEST_METHOD"] == "POST") {
-        $id = $_POST['id'];
-        $coche = obtenerElemento($id);
-        $marca = $_POST['Marca'];
-        $modelo = $_POST['Modelo'];
-        $descripcion =  $_POST['Cilindrada'];
-        $precio = $_POST['Victorias_carreras'];
-        $cantidad = $_POST['Titulos'];
-        $fecha = $_POST['Fecha_debut'];
-  
-        
-    if ($coche_editado == true) {
-        header("Location: ./index.php");
-        exit();
+    require "./models/coches_model.php";
+    $id = $_GET["Id"];
+    if (isset($_POST) && count($_POST)) {
+        $actualizado = editarElemento($id, $_POST['Marca'], $_POST['Modelo'], $_POST['Cilindrada'], $_POST['Victorias_carreras'], $_POST['Titulos'], $_POST['Fecha_debut']);
+        if ($actualizado == true) {
+            header("Location: ./index.php?controller=coches&action=listar");
+            exit();
+        } else {
+            header("Location: ./views/coches_actualizar.php?id=" . $id . "&error=si");
+        }
     } else {
-        header("Location: ./views/coches_actualizar.php?Id=" . $id . "&error=si");
+        $car = getCoche($id);
+        
     }
 }
 
-function crear(){
 
-}
 
 
 ?>
