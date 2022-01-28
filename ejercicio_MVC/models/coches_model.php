@@ -38,33 +38,43 @@ function getCoche($id)
 
 function editarElemento($id, $marca, $modelo, $cilindrada, $victorias_carreras, $titulos, $fecha_debut)
 {
-
-
     try {
         $db = getConnection();
-        $updated = false;
-
-        $sql = $db->prepare("UPDATE coches SET Marca=?, Modelo=?, Cilindrada=?, victorias_carreras=?, TItulos=?, Fecha=? WHERE Id=?");
-
-
-        $sql->bindParam(1,  $id);
-        $sql->bindParam(2,  $marca);
-        $sql->bindParam(3,  $modelo);
-        $sql->bindParam(4,  $cilindrada);
-        $sql->bindParam(5,  $victorias_carreras);
-        $sql->bindParam(6,  $titulos);
-        $sql->bindParam(7,  $fecha_debut);
-
-
-        $sql->execute();
-        if ($sql->rowCount() > 0) {
-            $updated = true;
-        }
-    } catch (PDOException $e) {
-        echo "Connection fallida: " . $e->getMessage();
-        echo "<br>";
+        $sqlQuery = $db->prepare("UPDATE coches SET Marca=?,Modelo=?,Cilindrada=?,victorias_carreras=?,TItulos=?,Fecha=? WHERE Id=?");
+        $sqlQuery->bindParam(1, $marca);
+        $sqlQuery->bindParam(2, $modelo);
+        $sqlQuery->bindParam(3, $cilindrada);
+        $sqlQuery->bindParam(4, $victorias_carreras);
+        $sqlQuery->bindParam(5, $titulos);
+        $sqlQuery->bindParam(6, $fecha_debut);
+        $sqlQuery->bindParam(7, $id);
+        $sqlQuery->execute();
+        $retorno = $sqlQuery->execute();
+        $db = null;
+        return $retorno;
+    } catch (\Throwable $e) {
+        echo $e;
+        return false;
     }
-    $db = null;
-    return $updated;
 }
 
+function crearCoche($marca, $modelo, $cilindrada, $victorias_carreras, $titulos, $fecha_debut) {
+
+    $exito = false;
+
+    $db = getConnection();
+    $sqlQuery = "INSERT INTO coches (Marca, Modelo, Cilindrada, victorias_carreras, TItulos, Fecha) VALUE (?,?,?,?,?,?)";
+    $stmt = $db->prepare($sqlQuery);
+    $stmt->bindParam(1, $marca);
+    $stmt->bindParam(2, $modelo);
+    $stmt->bindParam(3, $cilindrada);
+    $stmt->bindParam(4, $victorias_carreras);
+    $stmt->bindParam(5, $titulos);
+    $stmt->bindParam(6, $fecha_debut);
+
+   
+
+    $exito = $stmt->execute();
+
+    return $exito;
+}
