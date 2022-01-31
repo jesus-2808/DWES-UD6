@@ -1,9 +1,9 @@
 <html>
     <head>
-        <title>Recetas</title>
+        <title>Coches WRC</title>
     </head>
     <body>
-        <h1>Recetas</h1>
+        <h1>Coches WRC</h1>
         <?php 
         
         if ($creado==true) {

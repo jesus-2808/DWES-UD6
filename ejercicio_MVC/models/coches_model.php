@@ -60,10 +60,9 @@ function editarElemento($id, $marca, $modelo, $cilindrada, $victorias_carreras, 
 
 function crearCoche($marca, $modelo, $cilindrada, $victorias_carreras, $titulos, $fecha_debut) {
 
-    $exito = false;
-
+   try {
     $db = getConnection();
-    $sqlQuery = "INSERT INTO coches (Marca, Modelo, Cilindrada, victorias_carreras, TItulos, Fecha) VALUE (?,?,?,?,?,?)";
+    $sqlQuery = "INSERT INTO coches (Marca, Modelo, Cilindrada, victorias_carreras, TItulos, Fecha) VALUES (?,?,?,?,?,?)";
     $stmt = $db->prepare($sqlQuery);
     $stmt->bindParam(1, $marca);
     $stmt->bindParam(2, $modelo);
@@ -71,10 +70,24 @@ function crearCoche($marca, $modelo, $cilindrada, $victorias_carreras, $titulos,
     $stmt->bindParam(4, $victorias_carreras);
     $stmt->bindParam(5, $titulos);
     $stmt->bindParam(6, $fecha_debut);
+     $stmt->execute();
+     $last_id = $db->lastInsertId();
+     $db = null;
+     return $last_id;
+   } catch (PDOException $e) {
+    return $e->getMessage();
+   }
 
    
+}
 
-    $exito = $stmt->execute();
+function eliminarCoche($id){
+    $exito=false;
 
+    $db=getConnection();
+    $sqlQuery = "DELETE FROM coches WHERE Id = ?";
+    $stmt = $db->prepare($sqlQuery);
+    $stmt->bindParam(1, $id);
+    $exito=$stmt->execute();
     return $exito;
 }

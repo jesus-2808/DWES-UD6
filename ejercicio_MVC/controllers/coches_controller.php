@@ -51,6 +51,7 @@ function formAction() {
        editarElemento($id, $_POST['Marca'], $_POST['Modelo'], $_POST['Cilindrada'], $_POST['Victorias_carreras'], $_POST['Titulos'], $_POST['Fecha_debut']);
         header("Location: ?controller=coches&action=form&Id=$id");
     } else {
+        
         // En $creada tenemos si se ha realizado la creación o no.
         $creado = crearCoche($_POST['Marca'], $_POST['Modelo'], $_POST['Cilindrada'], $_POST['Victorias_carreras'], $_POST['Titulos'], $_POST['Fecha_debut']);
 
@@ -58,6 +59,19 @@ function formAction() {
         include './views/coches_crear.php';
     }
 }
+
+function eliminar() {
+
+    // Se incluye el modelo.
+    require './models/coches_model.php';
+    
+    // Eliminamos la receta.
+    eliminarCoche($_GET['Id']);
+
+    // Una vez eliminado nos redirigimos a la lista inicial.
+    header("Location: index.php");
+}
+
 
 
 ?>
